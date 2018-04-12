@@ -26,7 +26,7 @@ public class Transaction {
         this.inputs = inputs;
     }
 
-    public String calulateHash() {
+    public String calculateHash() {
         sequence++;
         return StringUtil.applySha256(
                 StringUtil.getStringFromKey(sender) +
@@ -79,7 +79,7 @@ public class Transaction {
         }
 
         float leftOver = getInputsValue() - value;
-        transactionId = calulateHash();
+        transactionId = calculateHash();
         outputs.add(new TransactionOutput(this.reciepient,value,transactionId));
         outputs.add(new TransactionOutput(this.sender,leftOver,transactionId));
 

@@ -15,7 +15,7 @@ public class BcMain {
         NodeChain.UTXOs.put(NodeChain.genesisTransaction.outputs.get(0).id, NodeChain.genesisTransaction.outputs.get(0));
     }
 
-    private static Block startBlock(Wallet coinbase) {
+    private static Block startBlock(Wallet coinbase,float value) {
         Wallet walletA = NodeChain.walletA;
         Wallet walletB = NodeChain.walletB;
         int size = NodeChain.blockchain.size();
@@ -31,7 +31,7 @@ public class BcMain {
             Block block = new Block(preBlock.hash);
             System.out.println("\nWalletA's balance is: " + walletA.getBalance());
             System.out.println("\nWalletA is Attempting to send funds (40) to WalletB...");
-            block.addTransaction(walletA.sendFunds(walletB.publicKey, 40f));
+            block.addTransaction(walletA.sendFunds(walletB.publicKey, value));
             NodeChain.addBlock(block);
             System.out.println("\nWalletA's balance is: " + walletA.getBalance());
             System.out.println("WalletB's balance is: " + walletB.getBalance());
@@ -47,8 +47,11 @@ public class BcMain {
         NodeChain.walletB = new Wallet();
         Wallet coinbase = new Wallet();
         System.out.println("coin balance:" + coinbase.getBalance());
-        startBlock(coinbase);
-        startBlock(coinbase);
+        startBlock(coinbase,0);
+        startBlock(coinbase,20f);
+        startBlock(coinbase,80f);
+        startBlock(coinbase,0f);
+//        startBlock(coinbase);
         System.out.println("coin balance:" + coinbase.getBalance());
 
         NodeChain.isChainValid();
