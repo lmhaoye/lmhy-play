@@ -70,6 +70,7 @@ public class StringUtil {
         while (size > 1) {
             treeLayer = new ArrayList<>();
             for (int i = 0; i < previousTreeLayer.size(); i++) {
+                System.out.println("size:"+size);
                 treeLayer.add(applySha256(previousTreeLayer.get(i - 1) + previousTreeLayer.get(i)));
             }
             size = transactions.size();

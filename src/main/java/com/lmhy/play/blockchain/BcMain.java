@@ -32,6 +32,7 @@ public class BcMain {
             System.out.println("\nWalletA's balance is: " + walletA.getBalance());
             System.out.println("\nWalletA is Attempting to send funds (40) to WalletB...");
             block.addTransaction(walletA.sendFunds(walletB.publicKey, value));
+            block.addTransaction(walletA.sendFunds(walletB.publicKey, value));
             NodeChain.addBlock(block);
             System.out.println("\nWalletA's balance is: " + walletA.getBalance());
             System.out.println("WalletB's balance is: " + walletB.getBalance());
@@ -49,8 +50,8 @@ public class BcMain {
         System.out.println("coin balance:" + coinbase.getBalance());
         startBlock(coinbase,0);
         startBlock(coinbase,20f);
-        startBlock(coinbase,80f);
-        startBlock(coinbase,0f);
+        startBlock(coinbase,79f);
+        startBlock(coinbase,1f);
 //        startBlock(coinbase);
         System.out.println("coin balance:" + coinbase.getBalance());
 
